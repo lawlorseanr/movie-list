@@ -7,7 +7,25 @@ p {
 }
 
 td {
-  width: 300px;
+  width: 400px;
   border: 1px solid black;
   padding: 0;
+}
+
+.movieTitle {
+  display: flex;
+  flex-direction: row;
+}
+.movieEntry {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.watchButton {
+  margin: 12px 30px 12px 0;
+}
+
+.watched {
+  background-color: green;
 }

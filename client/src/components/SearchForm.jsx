@@ -26,12 +26,13 @@ class SearchForm extends React.Component {
   render() {
     return (
       <form>
-        <input type="text" id="searchText"
+        <input type="text"
           onChange={(e) => this.onChange(e.target.value)}
           value={this.state.search}>
         </input>
         <button
-          type="submit" onClick={(e) => this.onClick(e)}>Go!</button>
+          type="submit"
+          onClick={(e) => this.onClick(e)}>Go!</button>
       </form>
     );
   }

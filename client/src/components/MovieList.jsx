@@ -3,28 +3,54 @@ import MovieEntry from './MovieEntry.jsx';
 
 var movieList = (props) => {
   var movieCount = 0;
+  var noMovieText = 'Please add a movie!';
   var oopsText = 'Sorry! No results found.';
 
+  var watchFlag = undefined;
+  if (props.onlyWatched) {
+    watchFlag = true;
+  } else if (props.onlyUnwatched) {
+    watchFlag = false;
+  }
+
   var renderOops = () => {
-    if (movieCount === 0) {
+    if (props.movies.length > 0 && movieCount === 0) {
       return (<tr><td><p>{`${oopsText}`}</p></td></tr>);
+    } else if (props.movies.length === 0) {
+      return (<tr><td><p>{`${noMovieText}`}</p></td></tr>);
     }
   }
 
   return (
-    <table>
-      <tbody>
+    <div>
+      <button
+        className={`${watchFlag === true ? 'watched' : ''}`}
+        onClick={(e) => {props.onWatchFilterClick(e, 'watched')}}
+      >Watched</button>
+      <button
+        className={`${watchFlag === false ? 'watched' : ''}`}
+        onClick={(e) => {props.onWatchFilterClick(e, 'unwatched')}}
+      >Unwatched</button>
+      <table>
+        <tbody>
           {props.movies.map( movie => {
           var search = props.searchFilter;
           var movielc = movie.title.toLowerCase();
-          if (!search || (search && movielc.indexOf(props.searchFilter.toLowerCase())>=0)){
+
+          var searchValid = !search || movielc.indexOf(search.toLowerCase()) >= 0;
+
+          if (searchValid && (watchFlag === undefined || movie.watched === watchFlag)) {
             movieCount++;
-            return <tr key={movie.id}><td><MovieEntry movie={movie}/></td></tr>
-          }
-        })}
-        {renderOops()}
-      </tbody>
-    </table>
+            return (
+              <tr key={movie.id}><td>
+                <MovieEntry movie={movie} onWatchedClick={props.onWatchedClick}/>
+              </td></tr>
+            );
+          }})}
+          {renderOops()}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
