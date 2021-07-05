@@ -1,9 +1,10 @@
 import React from 'react';
 
 var movieEntry = (props) => {
-  return (
-    <p>{props.movie.title}</p>
-  );
+  console.log(props.search);
+    return (
+      <p>{props.movie.title}</p>
+    );
 }
 
 

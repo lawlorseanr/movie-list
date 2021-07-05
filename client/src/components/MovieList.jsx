@@ -4,8 +4,11 @@ import MovieEntry from './MovieEntry.jsx';
 var movieList = (props) => {
   return (
     <table>
-      {props.movies.map( (movie, i) => {
-        return <tr><td><MovieEntry key={i} movie={movie}/></td></tr>
+      {props.movies.map( movie => {
+        return <tr><td><MovieEntry
+          key={movie.id}
+          movie={movie}
+          search={props.search}/></td></tr>
       })}
     </table>
   );
