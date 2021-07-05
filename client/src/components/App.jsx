@@ -14,32 +14,26 @@ class App extends React.Component {
       {title: 'Sunshine', id: 4},
       {title: 'Ex Machina', id: 5},
     ];
-    this.state.search = '';
+    this.state.searchFilter = undefined;
 
   }
 
-  updateSearch(search) {
+  filterMovieList(search) {
     var state = {};
-    state.search = search;
-    this.setState(state);
-  }
-
-  filterMovieList() {
-    var state = {};
+    this.state.searchFilter = search;
     this.setState(state);
   }
 
   render() {
     return (
       <div>
+        <h1>Movie List</h1>
         <div>
           <SearchForm
-            onChange={(s) => this.updateSearch(s)}
-            onSubmit={this.filterMovieList}
-            search={this.state.search}/>
+            handleSubmit={(search) => this.filterMovieList(search)}/>
         </div>
         <div>
-          <MovieList movies={this.state.movies} search={this.state.search}/>
+          <MovieList movies={this.state.movies} searchFilter={this.state.searchFilter}/>
         </div>
       </div>
     );
