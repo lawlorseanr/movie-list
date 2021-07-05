@@ -1,3 +1,13 @@
 body {
   font-family: sans-serif, arial;
 }
+
+p {
+  padding-left: 30px;
+}
+
+td {
+  width: 300px;
+  border: 1px solid black;
+  padding: 0;
+}
