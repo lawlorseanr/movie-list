@@ -3,6 +3,7 @@ import MovieList from './MovieList.jsx';
 import SearchForm from './SearchForm.jsx';
 import SubmitForm from'./SubmitForm.jsx';
 import APIdata from '../data/movieData.js';
+import API from '../lib/api.js';
 
 class App extends React.Component {
   constructor() {
@@ -15,9 +16,11 @@ class App extends React.Component {
     this.state.onlyWatched = false;
     this.state.onlyUnwated = false;
 
+    // API('Jack Reacher');
+
   }
 
-  changeRenderInfo(idx) {
+  toggleInfo(idx) {
     var state = this.state.movies;
     for (var i = 0; i < state.length; i++) {
       if (state[i].id === idx) {
@@ -27,7 +30,7 @@ class App extends React.Component {
     this.setState(state);
   }
 
-  changeWatchMovie(movieIndex) {
+  toggleWatchedMovie(movieIndex) {
     var movies = this.state.movies;
     for (var i = 0; i < movies.length; i++) {
       if (movies[i].id === movieIndex) {
@@ -92,9 +95,9 @@ class App extends React.Component {
           onlyWatched={this.state.onlyWatched}
           onlyUnwatched={this.state.onlyUnwatched}
           searchFilter={this.state.searchFilter}
-          titleClick={(idx) => this.changeRenderInfo(idx)}
+          titleClick={(idx) => this.toggleInfo(idx)}
           onWatchFilterClick={(e, flag) => this.changeWatchUnwatchFilter(e, flag)}
-          onWatchedClick={(idx) => this.changeWatchMovie(idx)}/>
+          onWatchedClick={(idx) => this.toggleWatchedMovie(idx)}/>
       </div>
     );
   }
