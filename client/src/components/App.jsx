@@ -16,7 +16,7 @@ class App extends React.Component {
     this.state.onlyWatched = false;
     this.state.onlyUnwated = false;
 
-    // API('Jack Reacher');
+    API('Jack Reacher');
 
   }
 
