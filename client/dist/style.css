@@ -35,5 +35,16 @@ td {
 }
 
 .renderMovieInfo {
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.moviedetail {
+  margin: 2px 0 2px 0;
+}
+
+.movieImage {
+  padding-right: 30px;
+  margin: 2px 0 2px 0;
 }

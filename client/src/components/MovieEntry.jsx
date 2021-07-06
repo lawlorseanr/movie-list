@@ -13,10 +13,13 @@ var movieEntry = (props) => {
             >watched</button>
         </div>
         <div className={`${props.movie.renderInfo ? 'renderMovieInfo' : 'movieInfo'}`}>
-          <p>Year: {props.movie.year}</p>
-          <p>Runtime: {props.movie.runtime}</p>
-          <p>Metascore: {props.movie.metascore}</p>
-          <p>IMDB Rating: {props.movie.imdb}</p>
+          <div>
+            <p className="moviedetail">Year: {props.movie.year}</p>
+            <p className="moviedetail">Runtime: {props.movie.runtime}</p>
+            <p className="moviedetail">Metascore: {props.movie.metascore}</p>
+            <p className="moviedetail">IMDB Rating: {props.movie.imdb}</p>
+          </div>
+          <img className="movieImage" src="../../src/images/matrix.jpeg"></img>
         </div>
       </td></tr>
     );
