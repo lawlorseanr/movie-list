@@ -36,15 +36,17 @@ var movieList = (props) => {
           {props.movies.map( movie => {
           var search = props.searchFilter;
           var movielc = movie.title.toLowerCase();
-
           var searchValid = !search || movielc.indexOf(search.toLowerCase()) >= 0;
 
           if (searchValid && (watchFlag === undefined || movie.watched === watchFlag)) {
             movieCount++;
             return (
-              <tr key={movie.id}><td>
-                <MovieEntry movie={movie} onWatchedClick={props.onWatchedClick}/>
-              </td></tr>
+              <MovieEntry
+                key={movie.id}
+                movie={movie}
+                titleClick={props.titleClick}
+                onWatchedClick={props.onWatchedClick}
+              />
             );
           }})}
           {renderOops()}

@@ -29,3 +29,11 @@ td {
 .watched {
   background-color: green;
 }
+
+.movieInfo {
+  display: none;
+}
+
+.renderMovieInfo {
+  display: inline-block;
+}
